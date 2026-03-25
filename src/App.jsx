@@ -215,111 +215,6 @@ const MarkdownBlock = ({ content }) => {
   return <div style={{lineHeight:'1.8'}}>{elements}</div>;
 };
 
-// ─── SIDEBAR ────────────────────────────────────────────────────────────────
-const Sidebar = ({ activeChapter, activeTopic, onSelect, onClose }) => {
-  const [expandedChapter, setExpandedChapter] = useState(activeChapter);
-
-  return (
-    <aside style={{
-      position:'fixed', top:0, left:0, height:'100vh', width:280,
-      background:'#0d0d1a', borderRight:'1px solid rgba(255,255,255,0.06)',
-      overflowY:'auto', zIndex:100, transition:'transform 0.3s',
-      fontFamily:'Be Vietnam Pro'
-    }}>
-      {/* Logo */}
-      <div style={{padding:'1.5rem',borderBottom:'1px solid rgba(255,255,255,0.06)',
-                    background:'linear-gradient(135deg,#0d0d1a,#1a0d2e)'}}>
-        <div style={{display:'flex',alignItems:'center',gap:'0.75rem'}}>
-          <div style={{fontSize:'2rem',lineHeight:1}}>🐍</div>
-          <div>
-            <div style={{color:'#f1fa8c',fontWeight:800,fontSize:'1.1rem',letterSpacing:'0.05em'}}>PYTHON</div>
-            <div style={{color:'#bd93f9',fontWeight:600,fontSize:'0.7rem',letterSpacing:'0.2em'}}>MASTERY COURSE</div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Navigation */}
-      <nav style={{padding:'1rem 0'}}>
-        {/* Home */}
-        <button onClick={() => onSelect(null, null)} style={{
-          width:'100%', textAlign:'left', padding:'0.6rem 1.5rem',
-          background: (!activeChapter) ? 'rgba(241,250,140,0.1)' : 'transparent',
-          border:'none', cursor:'pointer', color: (!activeChapter) ? '#f1fa8c' : '#888',
-          fontSize:'0.85rem', fontFamily:'Be Vietnam Pro', fontWeight:600,
-          borderLeft: (!activeChapter) ? '3px solid #f1fa8c' : '3px solid transparent',
-          transition:'all 0.15s'
-        }}>
-          🏠 Trang chủ
-        </button>
-        
-        {chapters.map((ch, ci) => (
-          <div key={ch.id}>
-            <button
-              onClick={() => setExpandedChapter(expandedChapter === ci ? -1 : ci)}
-              style={{
-                width:'100%', textAlign:'left', padding:'0.7rem 1.5rem',
-                background: activeChapter === ci ? `rgba(${hexToRgb(ch.color)},0.1)` : 'transparent',
-                border:'none', cursor:'pointer',
-                color: activeChapter === ci ? ch.color : '#ccc',
-                fontSize:'0.85rem', fontFamily:'Be Vietnam Pro', fontWeight:600,
-                borderLeft: activeChapter === ci ? `3px solid ${ch.color}` : '3px solid transparent',
-                transition:'all 0.15s', display:'flex', justifyContent:'space-between'
-              }}
-            >
-              <span>{ch.emoji} {ch.title}</span>
-              <span style={{opacity:0.5}}>{expandedChapter === ci ? '▾' : '▸'}</span>
-            </button>
-            
-            {expandedChapter === ci && (
-              <div style={{background:'rgba(0,0,0,0.2)'}}>
-                {ch.topics.map((topic, ti) => (
-                  <button key={topic.id}
-                    onClick={() => onSelect(ci, ti)}
-                    style={{
-                      width:'100%', textAlign:'left', padding:'0.5rem 2rem',
-                      background: activeTopic === ti && activeChapter === ci 
-                        ? `rgba(${hexToRgb(ch.color)},0.15)` : 'transparent',
-                      border:'none', cursor:'pointer',
-                      color: activeTopic === ti && activeChapter === ci ? ch.color : '#888',
-                      fontSize:'0.8rem', fontFamily:'Quicksand',
-                      borderLeft: activeTopic === ti && activeChapter === ci
-                        ? `2px solid ${ch.color}` : '2px solid transparent',
-                      transition:'all 0.15s'
-                    }}
-                  >
-                    {topic.icon} {topic.title}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-        
-        {/* Extra pages */}
-        <div style={{borderTop:'1px solid rgba(255,255,255,0.06)', marginTop:'1rem', paddingTop:'1rem'}}>
-          {[
-            { id:'projects',   label:'🚀 Bài tập lớn',        color:'#ff79c6' },
-            { id:'tests',      label:'📝 Đề kiểm tra',         color:'#ffb86c' },
-            { id:'tips',       label:'💡 Tips & Tricks',        color:'#50fa7b' },
-            { id:'instructor', label:'👨‍💻 Giảng viên',          color:'#63b3ed' },
-          ].map(pg => (
-            <button key={pg.id} onClick={() => onSelect(pg.id, null)} style={{
-              width:'100%', textAlign:'left', padding:'0.6rem 1.5rem',
-              background: activeChapter === pg.id ? `rgba(${hexToRgb(pg.color)},0.1)` : 'transparent',
-              border:'none', cursor:'pointer', color: activeChapter === pg.id ? pg.color : '#888',
-              fontSize:'0.85rem', fontFamily:'Be Vietnam Pro', fontWeight:600,
-              borderLeft: activeChapter === pg.id ? `3px solid ${pg.color}` : '3px solid transparent',
-              transition:'all 0.15s'
-            }}>
-              {pg.label}
-            </button>
-          ))}
-        </div>
-      </nav>
-    </aside>
-  );
-};
-
 // ─── TOPIC DETAIL PAGE ───────────────────────────────────────────────────────
 const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
   const [tab, setTab] = useState('theory');
@@ -348,11 +243,11 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
         </p>
       </div>
       
-      {/* Tabs */}
-      <div style={{display:'flex', gap:'0.5rem', marginBottom:'1.5rem', flexWrap:'wrap'}}>
+      {/* Tabs - scrollable on mobile */}
+      <div style={{display:'flex', gap:'0.5rem', marginBottom:'1.5rem', flexWrap:'nowrap', overflowX:'auto', paddingBottom:'4px', WebkitOverflowScrolling:'touch'}}>
         {tabs.map(t => (
           <button key={t.id} onClick={() => setTab(t.id)} style={{
-            padding:'0.6rem 1.2rem', borderRadius:'8px',
+            padding:'0.6rem 1.2rem', borderRadius:'8px', flexShrink:0,
             border: `1px solid ${tab===t.id ? chapter.color : 'rgba(255,255,255,0.1)'}`,
             background: tab===t.id ? `rgba(${hexToRgb(chapter.color)},0.15)` : 'rgba(255,255,255,0.03)',
             color: tab===t.id ? chapter.color : '#888',
@@ -522,7 +417,7 @@ const ChapterPage = ({ chapter, onSelectTopic }) => {
       </div>
       
       {/* Topics grid */}
-      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(320px, 1fr))', gap:'1rem'}}>
+      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(min(320px,100%), 1fr))', gap:'1rem'}}>
         {chapter.topics.map((topic, ti) => (
           <div key={topic.id}
             onClick={() => onSelectTopic(ti)}
@@ -633,7 +528,7 @@ const ProjectsPage = () => {
               {proj.desc}
             </p>
             
-            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(260px, 1fr))', gap:'0.5rem', marginBottom:'1rem'}}>
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(min(260px,100%), 1fr))', gap:'0.5rem', marginBottom:'1rem'}}>
               {(proj.features || proj.modules).map((f, fi) => (
                 <div key={fi} style={{
                   display:'flex', alignItems:'flex-start', gap:'0.5rem',
@@ -766,7 +661,7 @@ const HomePage = ({ onSelectChapter }) => {
         📖 Nội dung chương trình
       </h2>
       
-      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'1rem', marginBottom:'3rem'}}>
+      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(min(300px, 100%), 1fr))', gap:'1rem', marginBottom:'3rem'}}>
         {chapters.map((ch, ci) => (
           <div key={ch.id} onClick={() => onSelectChapter(ci)}
             style={{
@@ -816,7 +711,7 @@ const HomePage = ({ onSelectChapter }) => {
       </div>
       
       {/* Quick links */}
-      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))', gap:'1rem'}}>
+      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(min(200px,100%),1fr))', gap:'1rem'}}>
         {[
           {id:'projects', emoji:'🚀', title:'Bài tập lớn', desc:'Dự án cá nhân & nhóm', color:'#ff79c6'},
           {id:'tests',    emoji:'📝', title:'Đề kiểm tra', desc:'3 đề thực hành',        color:'#ffb86c'},
@@ -1155,170 +1050,346 @@ const ExtraExercisesPage = ({ chapterId, topicId, chapterColor, onBack }) => {
 };
 
 // ─── APP ROOT ────────────────────────────────────────────────────────────────
-export default function App() {
-  const [activeChapter, setActiveChapter] = useState(null);
-  const [activeTopic, setActiveTopic]     = useState(null);
-  const [extraView, setExtraView]         = useState(false);  // show extra exercises
-  const [sidebarOpen, setSidebarOpen]     = useState(true);
+// Error Boundary to prevent white screen on Vercel
+class ErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error) { return { hasError: true, error }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{minHeight:'100vh',background:'#0a0a14',display:'flex',alignItems:'center',justifyContent:'center',padding:'2rem',fontFamily:'sans-serif'}}>
+          <div style={{textAlign:'center',maxWidth:500}}>
+            <div style={{fontSize:'4rem',marginBottom:'1rem'}}>🐍</div>
+            <h2 style={{color:'#ff5555',marginBottom:'1rem',fontSize:'1.5rem'}}>Có lỗi xảy ra</h2>
+            <p style={{color:'#888',marginBottom:'1.5rem',fontSize:'0.9rem'}}>{String(this.state.error?.message || '')}</p>
+            <button onClick={()=>window.location.reload()} style={{padding:'0.75rem 2rem',background:'#50fa7b',color:'#0a0a14',border:'none',borderRadius:'8px',cursor:'pointer',fontWeight:700,fontSize:'1rem'}}>
+              Tải lại trang
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
+// Custom hook for responsive breakpoint
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768;
+  });
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isMobile;
+}
+
+export default function App() {
+  const isMobile = useIsMobile();
+  const [activeChapter, setActiveChapter] = useState(null);
+  const [activeTopic,   setActiveTopic]   = useState(null);
+  const [extraView,     setExtraView]     = useState(false);
+  // On mobile default closed, on desktop default open
+  const [sidebarOpen,   setSidebarOpen]   = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth >= 768;
+  });
+
+  // Close sidebar on mobile when navigating
   const handleSelect = (chapterIdx, topicIdx) => {
     setActiveChapter(chapterIdx);
     setActiveTopic(topicIdx);
     setExtraView(false);
+    if (isMobile) setSidebarOpen(false);
   };
 
-  const isMobile = window.innerWidth < 768;
-  const sidebarWidth = sidebarOpen ? 280 : 0;
+  // Also close sidebar on mobile when screen shrinks
+  useEffect(() => {
+    // Close sidebar automatically on screen resize
+    if (isMobile && sidebarOpen) setSidebarOpen(false);
+    if (!isMobile && !sidebarOpen) setSidebarOpen(true);
+  }, [isMobile]); // eslint-disable-line
 
   const renderContent = () => {
-    if (activeChapter === null) return <HomePage onSelectChapter={ci => handleSelect(ci, null)} />;
-    if (activeChapter === 'projects') return <ProjectsPage />;
-    if (activeChapter === 'tips') return <TipsPage />;
-    if (activeChapter === 'instructor') return <InstructorPage />;
-    if (activeChapter === 'tests') return <PracticeTestsPage />;
-    
-    const chapter = chapters[activeChapter];
-    if (!chapter) return <HomePage onSelectChapter={ci => handleSelect(ci, null)} />;
-    
-    if (activeTopic === null) {
-      return <ChapterPage chapter={chapter} onSelectTopic={ti => handleSelect(activeChapter, ti)} />;
-    }
-    
-    const topic = chapter.topics[activeTopic];
-    if (!topic) return <ChapterPage chapter={chapter} onSelectTopic={ti => handleSelect(activeChapter, ti)} />;
+    try {
+      if (activeChapter === null)         return <HomePage onSelectChapter={ci => handleSelect(ci, null)} />;
+      if (activeChapter === 'projects')   return <ProjectsPage />;
+      if (activeChapter === 'tips')       return <TipsPage />;
+      if (activeChapter === 'instructor') return <InstructorPage />;
+      if (activeChapter === 'tests')      return <PracticeTestsPage />;
 
-    // Show extra exercises view
-    if (extraView) {
+      const chapter = chapters[activeChapter];
+      if (!chapter) return <HomePage onSelectChapter={ci => handleSelect(ci, null)} />;
+
+      if (activeTopic === null) {
+        return <ChapterPage chapter={chapter} onSelectTopic={ti => handleSelect(activeChapter, ti)} />;
+      }
+
+      const topic = chapter.topics[activeTopic];
+      if (!topic) return <ChapterPage chapter={chapter} onSelectTopic={ti => handleSelect(activeChapter, ti)} />;
+
+      if (extraView) {
+        return (
+          <ExtraExercisesPage
+            chapterId={activeChapter}
+            topicId={topic.id}
+            chapterColor={chapter.color}
+            onBack={() => setExtraView(false)}
+          />
+        );
+      }
+
       return (
-        <ExtraExercisesPage
-          chapterId={activeChapter}
-          topicId={topic.id}
-          chapterColor={chapter.color}
-          onBack={() => setExtraView(false)}
+        <TopicPage
+          chapter={chapter}
+          topic={topic}
+          onBack={() => handleSelect(activeChapter, null)}
+          onShowExtra={() => setExtraView(true)}
+          hasExtra={!!(extraExercises[topic.id]?.length || extraLabs[topic.id]?.length)}
         />
       );
+    } catch (e) {
+      return (
+        <div style={{padding:'2rem',textAlign:'center',color:'#ff5555'}}>
+          <p>Lỗi hiển thị nội dung. <button onClick={()=>handleSelect(null,null)} style={{color:'#50fa7b',background:'none',border:'none',cursor:'pointer',fontWeight:700}}>Về trang chủ</button></p>
+        </div>
+      );
     }
-    
-    return (
-      <TopicPage
-        chapter={chapter}
-        topic={topic}
-        onBack={() => handleSelect(activeChapter, null)}
-        onShowExtra={() => setExtraView(true)}
-        hasExtra={!!(extraExercises[topic.id]?.length || extraLabs[topic.id]?.length)}
-      />
-    );
   };
 
+  const SIDEBAR_W = 280;
+
   return (
-    <div style={{
-      minHeight:'100vh',
-      background:'#0a0a14',
-      color:'white',
-      fontFamily:"'Be Vietnam Pro', sans-serif",
-    }}>
-      {/* Global styles */}
-      <style>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
-        body { background: #0a0a14; font-family: 'Be Vietnam Pro', sans-serif; }
-        h1, h2, h3, h4, h5 { font-family: 'Be Vietnam Pro', sans-serif; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a14; }
-        ::-webkit-scrollbar-thumb { background: #313244; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #44475a; }
-        .code-line { min-height: 1.4em; font-family: 'JetBrains Mono', monospace; }
-        button { font-family: 'Be Vietnam Pro', sans-serif; }
-        a { font-family: 'Be Vietnam Pro', sans-serif; }
-      `}</style>
-      
-      {/* Sidebar */}
-      <div style={{
-        transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
-        transition: 'transform 0.3s ease'
-      }}>
-        <Sidebar
-          activeChapter={activeChapter}
-          activeTopic={activeTopic}
-          onSelect={handleSelect}
+    <ErrorBoundary>
+      <div style={{ minHeight:'100vh', background:'#0a0a14', color:'white', fontFamily:"'Be Vietnam Pro', sans-serif" }}>
+
+        {/* ── Global CSS ─────────────────────────────────────── */}
+        <style>{`
+          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+          :root { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+          html, body { background: #0a0a14; width: 100%; overflow-x: hidden; }
+          body { font-family: 'Be Vietnam Pro', sans-serif; }
+          h1,h2,h3,h4,h5 { font-family: 'Be Vietnam Pro', sans-serif; }
+          button { font-family: 'Be Vietnam Pro', sans-serif; }
+          a     { font-family: 'Be Vietnam Pro', sans-serif; }
+          ::-webkit-scrollbar       { width:6px; height:6px; }
+          ::-webkit-scrollbar-track { background:#0a0a14; }
+          ::-webkit-scrollbar-thumb { background:#313244; border-radius:3px; }
+          ::-webkit-scrollbar-thumb:hover { background:#44475a; }
+          .code-line { min-height:1.4em; font-family:'JetBrains Mono',monospace; }
+          /* Mobile overlay when sidebar open */
+          .sidebar-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 99;
+            backdrop-filter: blur(2px);
+          }
+          @media (max-width: 767px) {
+            .sidebar-overlay.open { display: block; }
+            .main-content {
+              margin-left: 0 !important;
+              max-width: 100% !important;
+              padding: 1rem !important;
+            }
+            .sidebar-toggle {
+              left: 1rem !important;
+            }
+          }
+          @media (min-width: 768px) {
+            .sidebar-overlay { display: none !important; }
+          }
+        `}</style>
+
+        {/* ── Mobile overlay (tap to close sidebar) ──────────── */}
+        <div
+          className={'sidebar-overlay' + (isMobile && sidebarOpen ? ' open' : '')}
+          onClick={() => setSidebarOpen(false)}
         />
-      </div>
-      
-      {/* Toggle sidebar button */}
-      <button
-        onClick={() => setSidebarOpen(o => !o)}
-        style={{
-          position:'fixed', top:'1rem', left: sidebarOpen ? '296px' : '1rem',
-          zIndex:200, background:'#1e1e2e', border:'1px solid rgba(255,255,255,0.1)',
-          color:'white', borderRadius:'8px', width:36, height:36,
-          cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center',
-          fontSize:'1rem', transition:'left 0.3s', boxShadow:'0 4px 12px rgba(0,0,0,0.4)'
-        }}
-      >
-        {sidebarOpen ? '◀' : '☰'}
-      </button>
-      
-      {/* Main content */}
-      <main style={{
-        marginLeft: sidebarOpen ? 280 : 0,
-        transition: 'margin-left 0.3s ease',
-        minHeight: '100vh',
-        padding: '2rem 2.5rem',
-        maxWidth: sidebarOpen ? 'calc(100% - 280px)' : '100%',
-      }}>
-        <div style={{maxWidth:900, margin:'0 auto'}}>
-          {/* Breadcrumb */}
-          {activeChapter !== null && (
-            <div style={{
-              display:'flex', alignItems:'center', gap:'0.5rem',
-              marginBottom:'1.5rem', fontFamily:'Quicksand', fontSize:'0.8rem',
-              color:'#666'
-            }}>
-              <button onClick={() => handleSelect(null, null)}
-                style={{background:'none',border:'none',color:'#888',cursor:'pointer',
-                         fontFamily:'Quicksand', fontSize:'0.8rem'}}>
-                Trang chủ
-              </button>
-              {typeof activeChapter === 'number' && chapters[activeChapter] && (
-                <>
-                  <span>›</span>
-                  <button onClick={() => handleSelect(activeChapter, null)}
-                    style={{background:'none',border:'none',color:'#888',cursor:'pointer',
-                             fontFamily:'Quicksand', fontSize:'0.8rem'}}>
-                    {chapters[activeChapter].title}
-                  </button>
-                </>
-              )}
-              {activeTopic !== null && typeof activeChapter === 'number' && chapters[activeChapter]?.topics[activeTopic] && (
-                <>
-                  <span>›</span>
-                  <span style={{color:'white'}}>
-                    {chapters[activeChapter].topics[activeTopic].title}
-                  </span>
-                </>
-              )}
-              {activeChapter === 'projects' && <><span>›</span><span style={{color:'white'}}>Bài tập lớn</span></>}
-              {activeChapter === 'tips' && <><span>›</span><span style={{color:'white'}}>Tips & Tricks</span></>}
-              {activeChapter === 'instructor' && <><span>›</span><span style={{color:'white'}}>Giảng viên</span></>}
-              {activeChapter === 'tests' && <><span>›</span><span style={{color:'white'}}>Đề kiểm tra</span></>}
+
+        {/* ── Sidebar ────────────────────────────────────────── */}
+        <aside style={{
+          position: 'fixed',
+          top: 0, left: 0,
+          height: '100vh',
+          width: SIDEBAR_W,
+          background: '#0d0d1a',
+          borderRight: '1px solid rgba(255,255,255,0.06)',
+          overflowY: 'auto',
+          zIndex: 100,
+          transform: sidebarOpen ? 'translateX(0)' : `translateX(-${SIDEBAR_W}px)`,
+          transition: 'transform 0.3s ease',
+          fontFamily: "'Be Vietnam Pro', sans-serif",
+        }}>
+          {/* Logo */}
+          <div style={{padding:'1.25rem 1.5rem',borderBottom:'1px solid rgba(255,255,255,0.06)',background:'linear-gradient(135deg,#0d0d1a,#1a0d2e)',display:'flex',alignItems:'center',gap:'0.75rem'}}>
+            <div style={{fontSize:'2rem',lineHeight:1}}>🐍</div>
+            <div>
+              <div style={{color:'#f1fa8c',fontWeight:800,fontSize:'1rem',letterSpacing:'0.05em'}}>PYTHON</div>
+              <div style={{color:'#bd93f9',fontWeight:700,fontSize:'0.65rem',letterSpacing:'0.18em'}}>MASTERY COURSE</div>
             </div>
-          )}
-          
-          {renderContent()}
-          
-          {/* Footer */}
-          <footer style={{
-            marginTop:'4rem', paddingTop:'2rem',
-            borderTop:'1px solid rgba(255,255,255,0.06)',
-            textAlign:'center', color:'#444', fontFamily:'Quicksand', fontSize:'0.75rem'
-          }}>
-            <p>🐍 Python Mastery — Học Python toàn diện</p>
-            <p style={{marginTop:'0.25rem', color:'#333'}}>
-              Được xây dựng với React • Upload lên GitHub Pages
-            </p>
-          </footer>
+            {/* Close btn on mobile */}
+            {isMobile && (
+              <button onClick={()=>setSidebarOpen(false)} style={{marginLeft:'auto',background:'none',border:'none',color:'#888',cursor:'pointer',fontSize:'1.2rem',lineHeight:1,padding:'0.25rem'}}>✕</button>
+            )}
+          </div>
+
+          {/* Nav */}
+          <nav style={{padding:'0.75rem 0'}}>
+            <SidebarBtn active={activeChapter===null} color='#f1fa8c' onClick={()=>handleSelect(null,null)}>🏠 Trang chủ</SidebarBtn>
+
+            {chapters.map((ch, ci) => (
+              <SidebarChapter key={ch.id} ch={ch} ci={ci} activeChapter={activeChapter} activeTopic={activeTopic} onSelect={handleSelect} />
+            ))}
+
+            <div style={{borderTop:'1px solid rgba(255,255,255,0.06)',marginTop:'0.75rem',paddingTop:'0.75rem'}}>
+              {[
+                {id:'projects',   label:'🚀 Bài tập lớn',  color:'#ff79c6'},
+                {id:'tests',      label:'📝 Đề kiểm tra',  color:'#ffb86c'},
+                {id:'tips',       label:'💡 Tips & Tricks', color:'#50fa7b'},
+                {id:'instructor', label:'👨‍💻 Giảng viên',   color:'#63b3ed'},
+              ].map(pg => (
+                <SidebarBtn key={pg.id} active={activeChapter===pg.id} color={pg.color} onClick={()=>handleSelect(pg.id,null)}>
+                  {pg.label}
+                </SidebarBtn>
+              ))}
+            </div>
+          </nav>
+        </aside>
+
+        {/* ── Hamburger / Toggle btn ──────────────────────────── */}
+        <button
+          className="sidebar-toggle"
+          onClick={() => setSidebarOpen(o => !o)}
+          style={{
+            position: 'fixed',
+            top: '1rem',
+            left: sidebarOpen ? SIDEBAR_W + 16 : '1rem',
+            zIndex: 200,
+            background: '#1e1e2e',
+            border: '1px solid rgba(255,255,255,0.12)',
+            color: 'white',
+            borderRadius: '8px',
+            width: 38, height: 38,
+            cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.1rem',
+            transition: 'left 0.3s',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
+            flexShrink: 0,
+          }}
+          aria-label="Toggle menu"
+        >
+          {sidebarOpen ? '✕' : '☰'}
+        </button>
+
+        {/* ── Main content ────────────────────────────────────── */}
+        <main
+          className="main-content"
+          style={{
+            marginLeft: !isMobile && sidebarOpen ? SIDEBAR_W : 0,
+            transition: 'margin-left 0.3s ease',
+            minHeight: '100vh',
+            padding: '2rem 2.5rem',
+            maxWidth: !isMobile && sidebarOpen ? `calc(100% - ${SIDEBAR_W}px)` : '100%',
+          }}
+        >
+          {/* Spacer for toggle button */}
+          <div style={{height:'3rem'}} />
+
+          <div style={{maxWidth: 900, margin: '0 auto'}}>
+
+            {/* Breadcrumb */}
+            {activeChapter !== null && (
+              <div style={{display:'flex',alignItems:'center',gap:'0.4rem',flexWrap:'wrap',marginBottom:'1.25rem',fontSize:'0.8rem',color:'#666'}}>
+                <button onClick={()=>handleSelect(null,null)} style={{background:'none',border:'none',color:'#888',cursor:'pointer',fontSize:'0.8rem',padding:0}}>Trang chủ</button>
+                {typeof activeChapter==='number' && chapters[activeChapter] && (
+                  <><span>›</span>
+                  <button onClick={()=>handleSelect(activeChapter,null)} style={{background:'none',border:'none',color:'#888',cursor:'pointer',fontSize:'0.8rem',padding:0}}>
+                    {chapters[activeChapter].title}
+                  </button></>
+                )}
+                {activeTopic!==null && typeof activeChapter==='number' && chapters[activeChapter]?.topics[activeTopic] && (
+                  <><span>›</span><span style={{color:'white'}}>{chapters[activeChapter].topics[activeTopic].title}</span></>
+                )}
+                {activeChapter==='projects'   && <><span>›</span><span style={{color:'white'}}>Bài tập lớn</span></>}
+                {activeChapter==='tips'        && <><span>›</span><span style={{color:'white'}}>Tips & Tricks</span></>}
+                {activeChapter==='instructor' && <><span>›</span><span style={{color:'white'}}>Giảng viên</span></>}
+                {activeChapter==='tests'      && <><span>›</span><span style={{color:'white'}}>Đề kiểm tra</span></>}
+              </div>
+            )}
+
+            {renderContent()}
+
+            {/* Footer */}
+            <footer style={{marginTop:'4rem',paddingTop:'2rem',borderTop:'1px solid rgba(255,255,255,0.06)',textAlign:'center',color:'#444',fontSize:'0.78rem'}}>
+              <p>🐍 Python Mastery — Học Python toàn diện</p>
+              <p style={{marginTop:'0.3rem',color:'#555'}}>
+                👨‍💻 GV: Trần Vĩnh Phúc — <a href="mailto:phuctv@dlu.edu.vn" style={{color:'#63b3ed',textDecoration:'none'}}>phuctv@dlu.edu.vn</a>
+              </p>
+            </footer>
+          </div>
+        </main>
+      </div>
+    </ErrorBoundary>
+  );
+}
+
+// ─── SMALL SIDEBAR HELPERS ───────────────────────────────────────────────────
+function SidebarBtn({ active, color, onClick, children }) {
+  return (
+    <button onClick={onClick} style={{
+      width:'100%', textAlign:'left', padding:'0.6rem 1.5rem',
+      background: active ? `rgba(${hexToRgb(color)},0.12)` : 'transparent',
+      border:'none', cursor:'pointer',
+      color: active ? color : '#aaa',
+      fontSize:'0.85rem', fontWeight: active ? 700 : 500,
+      borderLeft: active ? `3px solid ${color}` : '3px solid transparent',
+      transition:'all 0.15s', display:'block',
+    }}>
+      {children}
+    </button>
+  );
+}
+
+function SidebarChapter({ ch, ci, activeChapter, activeTopic, onSelect }) {
+  const [open, setOpen] = useState(activeChapter === ci);
+  useEffect(() => { if (activeChapter === ci) setOpen(true); }, [activeChapter, ci]);
+  const color = ch.color;
+  return (
+    <div>
+      <button onClick={() => setOpen(o => !o)} style={{
+        width:'100%', textAlign:'left', padding:'0.65rem 1.5rem',
+        background: activeChapter===ci ? `rgba(${hexToRgb(color)},0.1)` : 'transparent',
+        border:'none', cursor:'pointer',
+        color: activeChapter===ci ? color : '#ccc',
+        fontSize:'0.85rem', fontWeight:600,
+        borderLeft: activeChapter===ci ? `3px solid ${color}` : '3px solid transparent',
+        transition:'all 0.15s', display:'flex', justifyContent:'space-between', alignItems:'center',
+      }}>
+        <span>{ch.emoji} {ch.title}</span>
+        <span style={{opacity:0.5, fontSize:'0.75rem'}}>{open ? '▾' : '▸'}</span>
+      </button>
+      {open && (
+        <div style={{background:'rgba(0,0,0,0.15)'}}>
+          {ch.topics.map((topic, ti) => (
+            <button key={topic.id} onClick={() => onSelect(ci, ti)} style={{
+              width:'100%', textAlign:'left', padding:'0.45rem 1.5rem 0.45rem 2.25rem',
+              background: activeTopic===ti && activeChapter===ci ? `rgba(${hexToRgb(color)},0.15)` : 'transparent',
+              border:'none', cursor:'pointer',
+              color: activeTopic===ti && activeChapter===ci ? color : '#888',
+              fontSize:'0.78rem', fontWeight: activeTopic===ti && activeChapter===ci ? 600 : 400,
+              borderLeft: activeTopic===ti && activeChapter===ci ? `2px solid ${color}` : '2px solid transparent',
+              transition:'all 0.12s', display:'block',
+            }}>
+              {topic.icon} {topic.title}
+            </button>
+          ))}
         </div>
-      </main>
+      )}
     </div>
   );
 }
