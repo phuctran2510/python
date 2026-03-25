@@ -715,7 +715,7 @@ const HomePage = ({ onSelectChapter }) => {
           {id:'projects', emoji:'', title:'Bài tập lớn', desc:'Dự án cá nhân & nhóm', color:'#ff79c6'},
           {id:'tests',    emoji:'', title:'Đề kiểm tra', desc:'3 đề thực hành',        color:'#ffb86c'},
           {id:'tips',     emoji:'', title:'Tips & Tricks',desc:'Thủ thuật chuyên nghiệp',color:'#50fa7b'},
-          {id:'instructor',emoji:'👨',title:'Giảng viên', desc:'Phúc Trần — phuctv@dlu.edu.vn',color:'#63b3ed'},
+          {id:'instructor',emoji:'',title:'Giảng viên', desc:'Phúc Trần — phuctv@dlu.edu.vn',color:'#63b3ed'},
         ].map(item => (
           <div key={item.id} onClick={() => onSelectChapter(item.id)} style={{
             background:`rgba(${hexToRgb(item.color)},0.08)`, borderRadius:'16px',
