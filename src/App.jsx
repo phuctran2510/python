@@ -220,10 +220,10 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
   const [tab, setTab] = useState('theory');
   
   const tabs = [
-    { id:'theory', label:'📚 Lý thuyết' },
-    { id:'code', label:'💻 Code mẫu' },
-    { id:'exercises', label:'🏋️ Bài tập' },
-    { id:'lab', label:'🔬 Lab' },
+    { id:'theory', label:' Lý thuyết' },
+    { id:'code', label:' Code mẫu' },
+    { id:'exercises', label:' Bài tập' },
+    { id:'lab', label:' Lab' },
   ];
   
   return (
@@ -320,7 +320,7 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
             }}>
               <h2 style={{color: chapter.color, fontFamily:'Be Vietnam Pro', fontWeight:800,
                            fontSize:'1.4rem', marginBottom:'1.5rem'}}>
-                🔬 {topic.lab.title}
+                 {topic.lab.title}
               </h2>
               <div style={{display:'flex', flexDirection:'column', gap:'0.75rem'}}>
                 {topic.lab.steps.map((step, i) => (
@@ -635,8 +635,7 @@ const HomePage = ({ onSelectChapter }) => {
         <p style={{color:'rgba(255,255,255,0.6)', fontFamily:'Quicksand', 
                     fontSize:'1rem', maxWidth:600, margin:'0 auto 2rem',
                     lineHeight:1.6}}>
-          Học Python toàn diện — từ cơ bản đến nâng cao với lý thuyết, 
-          code mẫu, bài tập và dự án thực tế
+          Học Python vui !!!
         </p>
         
         {/* Stats */}
@@ -1229,7 +1228,7 @@ export default function App() {
             <div style={{fontSize:'2rem',lineHeight:1}}>🐍</div>
             <div>
               <div style={{color:'#f1fa8c',fontWeight:800,fontSize:'1rem',letterSpacing:'0.05em'}}>PYTHON</div>
-              <div style={{color:'#bd93f9',fontWeight:700,fontSize:'0.65rem',letterSpacing:'0.18em'}}>MASTERY COURSE</div>
+              <div style={{color:'#bd93f9',fontWeight:700,fontSize:'0.65rem',letterSpacing:'0.18em'}}>Phúc Trần (phuctv@dlu.edu.vn)</div>
             </div>
             {/* Close btn on mobile */}
             {isMobile && (
