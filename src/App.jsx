@@ -233,7 +233,7 @@ const Sidebar = ({ activeChapter, activeTopic, onSelect, onClose }) => {
           <div style={{fontSize:'2rem',lineHeight:1}}>🐍</div>
           <div>
             <div style={{color:'#f1fa8c',fontWeight:800,fontSize:'1.1rem',letterSpacing:'0.05em'}}>PYTHON</div>
-            <div style={{color:'#bd93f9',fontWeight:600,fontSize:'0.7rem',letterSpacing:'0.2em'}}>Phúc Trần</div>
+            <div style={{color:'#bd93f9',fontWeight:600,fontSize:'0.7rem',letterSpacing:'0.2em'}}>MASTERY COURSE</div>
           </div>
         </div>
       </div>
@@ -249,7 +249,7 @@ const Sidebar = ({ activeChapter, activeTopic, onSelect, onClose }) => {
           borderLeft: (!activeChapter) ? '3px solid #f1fa8c' : '3px solid transparent',
           transition:'all 0.15s'
         }}>
-           Trang chủ
+          🏠 Trang chủ
         </button>
         
         {chapters.map((ch, ci) => (
@@ -298,10 +298,10 @@ const Sidebar = ({ activeChapter, activeTopic, onSelect, onClose }) => {
         {/* Extra pages */}
         <div style={{borderTop:'1px solid rgba(255,255,255,0.06)', marginTop:'1rem', paddingTop:'1rem'}}>
           {[
-            { id:'projects',   label:' Bài tập lớn',        color:'#ff79c6' },
-            { id:'tests',      label:' Đề kiểm tra mẫu',         color:'#ffb86c' },
-            { id:'tips',       label:' Tips & Tricks',        color:'#50fa7b' },
-            { id:'instructor', label:' Giảng viên',          color:'#63b3ed' },
+            { id:'projects',   label:'🚀 Bài tập lớn',        color:'#ff79c6' },
+            { id:'tests',      label:'📝 Đề kiểm tra',         color:'#ffb86c' },
+            { id:'tips',       label:'💡 Tips & Tricks',        color:'#50fa7b' },
+            { id:'instructor', label:'👨‍💻 Giảng viên',          color:'#63b3ed' },
           ].map(pg => (
             <button key={pg.id} onClick={() => onSelect(pg.id, null)} style={{
               width:'100%', textAlign:'left', padding:'0.6rem 1.5rem',
@@ -325,10 +325,10 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
   const [tab, setTab] = useState('theory');
   
   const tabs = [
-    { id:'theory', label:' Lý thuyết' },
-    { id:'code', label:' Code mẫu' },
-    { id:'exercises', label:' Bài tập' },
-    { id:'lab', label:' Lab' },
+    { id:'theory', label:'📚 Lý thuyết' },
+    { id:'code', label:'💻 Code mẫu' },
+    { id:'exercises', label:'🏋️ Bài tập' },
+    { id:'lab', label:'🔬 Lab' },
   ];
   
   return (
@@ -479,7 +479,7 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
             border:'1px solid #f1fa8c', color:'#f1fa8c',
             fontFamily:'Be Vietnam Pro', fontWeight:700, cursor:'pointer', fontSize:'0.85rem'
           }}>
-             Bài tập bổ sung →
+            📚 Bài tập bổ sung →
           </button>
         )}
       </div>
@@ -581,7 +581,7 @@ const ProjectsPage = () => {
       <div style={{marginBottom:'2rem'}}>
         <h1 style={{color:'white', fontFamily:'Be Vietnam Pro', fontWeight:800, 
                      fontSize:'2.5rem', margin:'0 0 0.5rem'}}>
-           Bài tập lớn
+          🚀 Bài tập lớn
         </h1>
         <p style={{color:'#888', fontFamily:'Quicksand', fontSize:'0.85rem'}}>
           Dự án thực tế để rèn luyện kỹ năng toàn diện
@@ -740,7 +740,8 @@ const HomePage = ({ onSelectChapter }) => {
         <p style={{color:'rgba(255,255,255,0.6)', fontFamily:'Quicksand', 
                     fontSize:'1rem', maxWidth:600, margin:'0 auto 2rem',
                     lineHeight:1.6}}>
-          phuctv@dlu.edu.vn
+          Học Python toàn diện — từ cơ bản đến nâng cao với lý thuyết, 
+          code mẫu, bài tập và dự án thực tế
         </p>
         
         {/* Stats */}
@@ -762,7 +763,7 @@ const HomePage = ({ onSelectChapter }) => {
       {/* Chapters grid */}
       <h2 style={{color:'white', fontFamily:'Be Vietnam Pro', fontWeight:800, 
                    fontSize:'1.5rem', marginBottom:'1.5rem'}}>
-        Nội dung chương trình
+        📖 Nội dung chương trình
       </h2>
       
       <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'1rem', marginBottom:'3rem'}}>
@@ -817,10 +818,10 @@ const HomePage = ({ onSelectChapter }) => {
       {/* Quick links */}
       <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))', gap:'1rem'}}>
         {[
-          {id:'projects', emoji:'', title:'Bài tập lớn', desc:'Dự án cá nhân & nhóm', color:'#ff79c6'},
-          {id:'tests',    emoji:'', title:'Đề kiểm tra mẫu', desc:'3 đề thực hành',        color:'#ffb86c'},
-          {id:'tips',     emoji:'', title:'Tips & Tricks',desc:'Thủ thuật chuyên nghiệp',color:'#50fa7b'},
-          {id:'instructor',emoji:'',title:'Giảng viên', desc:'Phúc Trần — phuctv@dlu.edu.vn',color:'#63b3ed'},
+          {id:'projects', emoji:'🚀', title:'Bài tập lớn', desc:'Dự án cá nhân & nhóm', color:'#ff79c6'},
+          {id:'tests',    emoji:'📝', title:'Đề kiểm tra', desc:'3 đề thực hành',        color:'#ffb86c'},
+          {id:'tips',     emoji:'💡', title:'Tips & Tricks',desc:'Thủ thuật chuyên nghiệp',color:'#50fa7b'},
+          {id:'instructor',emoji:'👨‍💻',title:'Giảng viên', desc:'Phúc Trần — phuctv@dlu.edu.vn',color:'#63b3ed'},
         ].map(item => (
           <div key={item.id} onClick={() => onSelectChapter(item.id)} style={{
             background:`rgba(${hexToRgb(item.color)},0.08)`, borderRadius:'16px',
@@ -845,7 +846,7 @@ const InstructorPage = () => (
   <div>
     <div style={{marginBottom:'2rem'}}>
       <h1 style={{color:'white',fontFamily:'Be Vietnam Pro',fontWeight:800,fontSize:'2.5rem',margin:'0 0 0.5rem'}}>
-         Giảng viên hướng dẫn
+        👨‍💻 Giảng viên hướng dẫn
       </h1>
     </div>
 
@@ -915,25 +916,25 @@ const InstructorPage = () => (
     <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))',gap:'1rem',marginBottom:'2rem'}}>
       {/* Bio */}
       <div style={{background:'rgba(255,255,255,0.02)',borderRadius:'16px',border:'1px solid rgba(255,255,255,0.06)',padding:'1.5rem',gridColumn:'1/-1'}}>
-        <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'0.75rem'}}> Giới thiệu</h3>
+        <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'0.75rem'}}>📋 Giới thiệu</h3>
         <p style={{color:'#e2e2e2',lineHeight:'1.7',fontFamily:'Quicksand',fontSize:'0.85rem',margin:0}}>{instructor.bio}</p>
       </div>
 
       {/* Office info */}
       <div style={{background:'rgba(255,255,255,0.02)',borderRadius:'16px',border:'1px solid rgba(99,179,237,0.15)',padding:'1.5rem'}}>
-        <h3 style={{color:'#63b3ed',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}> Lịnh Vực Đam Mê Nghiên Cứu</h3>
+        <h3 style={{color:'#63b3ed',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>🏢 Văn phòng</h3>
         <p style={{color:'#ccc',fontFamily:'Quicksand',fontSize:'0.82rem',marginBottom:'0.75rem'}}>
-           {instructor.office}
+          📍 {instructor.office}
         </p>
         <div style={{background:'rgba(99,179,237,0.1)',borderRadius:'8px',padding:'0.75rem',border:'1px solid rgba(99,179,237,0.2)'}}>
-          <div style={{color:'#63b3ed',fontFamily:'Quicksand',fontSize:'0.78rem',marginBottom:'0.25rem'}}> Email:</div>
+          <div style={{color:'#63b3ed',fontFamily:'Quicksand',fontSize:'0.78rem',marginBottom:'0.25rem'}}>⏰ Giờ tiếp sinh viên:</div>
           <div style={{color:'#e2e2e2',fontFamily:'Quicksand',fontSize:'0.78rem'}}>{instructor.officeHours}</div>
         </div>
       </div>
 
       {/* Subjects */}
       <div style={{background:'rgba(255,255,255,0.02)',borderRadius:'16px',border:'1px solid rgba(159,122,234,0.15)',padding:'1.5rem'}}>
-        <h3 style={{color:'#9f7aea',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}> Môn học phụ trách</h3>
+        <h3 style={{color:'#9f7aea',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>📚 Môn học phụ trách</h3>
         <div style={{display:'flex',flexDirection:'column',gap:'0.5rem'}}>
           {instructor.subjects.map((s,i) => (
             <div key={i} style={{display:'flex',alignItems:'center',gap:'0.5rem',padding:'0.4rem 0.75rem',background:'rgba(159,122,234,0.1)',borderRadius:'8px',color:'#e2e2e2',fontFamily:'Quicksand',fontSize:'0.82rem'}}>
@@ -946,7 +947,7 @@ const InstructorPage = () => (
 
     {/* Quotes */}
     <div style={{marginBottom:'2rem'}}>
-      <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}> Paper Public</h3>
+      <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>💬 Quan điểm giảng dạy</h3>
       <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
         {instructor.quotes.map((q,i) => (
           <blockquote key={i} style={{
@@ -955,7 +956,7 @@ const InstructorPage = () => (
             color:'#e2e2e2', fontFamily:'Quicksand', fontSize:'0.87rem',
             lineHeight:'1.7', fontStyle:'italic'
           }}>
-            {q} <span style={{color:'#f1fa8c',fontStyle:'normal'}}></span>
+            {q} <span style={{color:'#f1fa8c',fontStyle:'normal'}}>— {instructor.name}</span>
           </blockquote>
         ))}
       </div>
@@ -968,10 +969,10 @@ const InstructorPage = () => (
       padding:'1.5rem', textAlign:'center'
     }}>
       <p style={{color:'#50fa7b',fontFamily:'Be Vietnam Pro',fontWeight:700,fontSize:'1.1rem',marginBottom:'0.5rem'}}>
-         Liên hệ & hỗ trợ
+        📧 Liên hệ hỏi bài & hỗ trợ
       </p>
       <p style={{color:'#aaa',fontFamily:'Quicksand',fontSize:'0.83rem',margin:'0 0 1rem'}}>
-        Sinh viên có thể liên hệ qua email hoặc số điện thoại
+        Sinh viên có thể liên hệ qua email hoặc trực tiếp tại văn phòng trong giờ tiếp SV
       </p>
       <div style={{display:'flex',justifyContent:'center',gap:'1rem',flexWrap:'wrap'}}>
         <a href={'mailto:'+instructor.email} style={{
@@ -996,7 +997,7 @@ const PracticeTestsPage = () => {
     <div>
       <div style={{marginBottom:'2rem'}}>
         <h1 style={{color:'white',fontFamily:'Be Vietnam Pro',fontWeight:800,fontSize:'2.5rem',margin:'0 0 0.5rem'}}>
-           Đề kiểm tra thực hành
+          📝 Đề kiểm tra thực hành
         </h1>
         <p style={{color:'#888',fontFamily:'Quicksand',fontSize:'0.85rem'}}>
           Đề thi thực hành theo từng chương — in ra và làm trong thời gian quy định
@@ -1076,13 +1077,13 @@ const ExtraExercisesPage = ({ chapterId, topicId, chapterColor, onBack }) => {
       <div style={{display:'flex',alignItems:'center',gap:'1rem',marginBottom:'1.5rem'}}>
         <button onClick={onBack} style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)',color:'white',borderRadius:'8px',padding:'0.5rem 1rem',cursor:'pointer',fontFamily:'Be Vietnam Pro',fontWeight:700}}>←</button>
         <h2 style={{color:'white',fontFamily:'Be Vietnam Pro',fontWeight:800,fontSize:'1.5rem',margin:0}}>
-           Bài tập bổ sung
+          📚 Bài tập bổ sung
         </h2>
       </div>
 
       {exercises.length > 0 && (
         <div style={{marginBottom:'2rem'}}>
-          <h3 style={{color:color,fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}> Bài tập thực hành ({exercises.length} bài)</h3>
+          <h3 style={{color:color,fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>🏋️ Bài tập thực hành ({exercises.length} bài)</h3>
           <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
             {exercises.map((ex,i) => (
               <div key={i} style={{background:'rgba(255,255,255,0.02)',borderRadius:'12px',border:'1px solid rgba(255,255,255,0.07)',overflow:'hidden'}}>
@@ -1118,7 +1119,7 @@ const ExtraExercisesPage = ({ chapterId, topicId, chapterColor, onBack }) => {
 
       {labs.length > 0 && (
         <div>
-          <h3 style={{color:'#8be9fd',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}> Lab bổ sung ({labs.length} lab)</h3>
+          <h3 style={{color:'#8be9fd',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>🔬 Lab bổ sung ({labs.length} lab)</h3>
           <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
             {labs.map((lab,i) => (
               <div key={i} style={{background:'rgba(255,255,255,0.02)',borderRadius:'12px',border:'1px solid rgba(139,233,253,0.15)',padding:'1.5rem'}}>
@@ -1299,7 +1300,7 @@ export default function App() {
               {activeChapter === 'projects' && <><span>›</span><span style={{color:'white'}}>Bài tập lớn</span></>}
               {activeChapter === 'tips' && <><span>›</span><span style={{color:'white'}}>Tips & Tricks</span></>}
               {activeChapter === 'instructor' && <><span>›</span><span style={{color:'white'}}>Giảng viên</span></>}
-              {activeChapter === 'tests' && <><span>›</span><span style={{color:'white'}}>Đề kiểm tra mẫu</span></>}
+              {activeChapter === 'tests' && <><span>›</span><span style={{color:'white'}}>Đề kiểm tra</span></>}
             </div>
           )}
           
@@ -1311,9 +1312,9 @@ export default function App() {
             borderTop:'1px solid rgba(255,255,255,0.06)',
             textAlign:'center', color:'#444', fontFamily:'Quicksand', fontSize:'0.75rem'
           }}>
-            <p> Python Cơ Bản </p>
+            <p>🐍 Python Mastery — Học Python toàn diện</p>
             <p style={{marginTop:'0.25rem', color:'#333'}}>
-              Được xây dựng với Phuctv bằng React 
+              Được xây dựng với React • Upload lên GitHub Pages
             </p>
           </footer>
         </div>
