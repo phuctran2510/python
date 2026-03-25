@@ -374,7 +374,7 @@ const TopicPage = ({ chapter, topic, onBack, onShowExtra, hasExtra }) => {
             border:'1px solid #f1fa8c', color:'#f1fa8c',
             fontFamily:'Be Vietnam Pro', fontWeight:700, cursor:'pointer', fontSize:'0.85rem'
           }}>
-            📚 Bài tập bổ sung →
+             Bài tập bổ sung →
           </button>
         )}
       </div>
@@ -476,7 +476,7 @@ const ProjectsPage = () => {
       <div style={{marginBottom:'2rem'}}>
         <h1 style={{color:'white', fontFamily:'Be Vietnam Pro', fontWeight:800, 
                      fontSize:'2.5rem', margin:'0 0 0.5rem'}}>
-          🚀 Bài tập lớn
+           Bài tập lớn
         </h1>
         <p style={{color:'#888', fontFamily:'Quicksand', fontSize:'0.85rem'}}>
           Dự án thực tế để rèn luyện kỹ năng toàn diện
@@ -565,7 +565,7 @@ const TipsPage = () => {
       <div style={{marginBottom:'2rem'}}>
         <h1 style={{color:'white', fontFamily:'Be Vietnam Pro', fontWeight:800, 
                      fontSize:'2.5rem', margin:'0 0 0.5rem'}}>
-          💡 Tips & Tricks Python
+           Tips & Tricks Python
         </h1>
         <p style={{color:'#888', fontFamily:'Quicksand', fontSize:'0.85rem'}}>
           Thủ thuật và mẹo lập trình Python chuyên nghiệp
