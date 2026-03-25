@@ -841,7 +841,7 @@ const InstructorPage = () => (
 
     {/* Quotes */}
     <div style={{marginBottom:'2rem'}}>
-      <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>💬 Quan điểm giảng dạy</h3>
+      <h3 style={{color:'#f1fa8c',fontFamily:'Be Vietnam Pro',fontWeight:700,marginBottom:'1rem'}}>Papers Pubic</h3>
       <div style={{display:'flex',flexDirection:'column',gap:'1rem'}}>
         {instructor.quotes.map((q,i) => (
           <blockquote key={i} style={{
