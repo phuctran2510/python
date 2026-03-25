@@ -2,7 +2,7 @@
   "name": "python-mastery",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://phuctran2510.github.io/python-mastery",
+  "homepage": "https://phuctran2510.github.io/python",
   "dependencies": {
     "ajv": "^8.18.0",
     "react": "^18.2.0",
