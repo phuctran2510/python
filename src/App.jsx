@@ -1246,10 +1246,10 @@ export default function App() {
 
             <div style={{borderTop:'1px solid rgba(255,255,255,0.06)',marginTop:'0.75rem',paddingTop:'0.75rem'}}>
               {[
-                {id:'projects',   label:'🚀 Bài tập lớn',  color:'#ff79c6'},
-                {id:'tests',      label:'📝 Đề kiểm tra',  color:'#ffb86c'},
-                {id:'tips',       label:'💡 Tips & Tricks', color:'#50fa7b'},
-                {id:'instructor', label:'👨‍💻 Giảng viên',   color:'#63b3ed'},
+                {id:'projects',   label:' Bài tập lớn',  color:'#ff79c6'},
+                {id:'tests',      label:' Đề kiểm tra',  color:'#ffb86c'},
+                {id:'tips',       label:' Tips & Tricks', color:'#50fa7b'},
+                {id:'instructor', label:'👨 Giảng viên',   color:'#63b3ed'},
               ].map(pg => (
                 <SidebarBtn key={pg.id} active={activeChapter===pg.id} color={pg.color} onClick={()=>handleSelect(pg.id,null)}>
                   {pg.label}
