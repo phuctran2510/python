@@ -4,28 +4,24 @@
 
 export const instructor = {
   name: "Phúc Trần",
-  fullName: "Trần Vĩnh Phúc",
+  fullName: "Trần Văn Phúc",
   title: "Giảng viên Khoa Công nghệ Thông tin",
   university: "Trường Đại học Đà Lạt (DLU)",
   email: "phuctv@dlu.edu.vn",
   phone: "0976 353 605",
-  avatar: "",
-  bio: "Giảng viên giảng dạy các học phần IoT, Mạng thế hệ mới, Voice over IP, Chuyên đề Mạng máy tính 1. Hướng nghiên cứu: Triển khai hệ thống AIoT, Bảo mật cho Edge Computing và Mạng Phân tán",
-  subjects: ["IoT", "Mạng thế hệ mới", "Voice over IP", "Chuyên đề Mạng máy tính 1"],
-  office: "Triển khai hệ thống AIoT, Bảo mật cho Edge Computing và Mạng Phân tán",
-  officeHours: "phuctv@dlu.edu.vn",
+  avatar: "👨‍💻",
+  bio: "Giảng viên với nhiều năm kinh nghiệm giảng dạy lập trình Python, khoa học dữ liệu và phát triển phần mềm. Chuyên sâu về Python, Machine Learning và ứng dụng thực tiễn trong giáo dục.",
+  subjects: ["Lập trình Python", "Cấu trúc dữ liệu & Giải thuật", "Khoa học dữ liệu", "Lập trình hướng đối tượng"],
+  office: "Phòng A2.05 — Khoa CNTT, Trường ĐH Đà Lạt",
+  officeHours: "Thứ 2, 4, 6: 8:00 - 11:30 | Thứ 3, 5: 14:00 - 17:00",
   social: {
-    github: "github.com/phuctran2510",
+    github: "github.com/phuctv-dlu",
     website: "dlu.edu.vn",
   },
   quotes: [
-    "\"TrustAware-X: Integrating Game-Theoretic Incentives, Reinforcement Learning, and Shapley Value Fair Compensation in Blockchain-Secured Federated Learning, Phuc Tran-Vinh, Thai-Minh Truong, and Cuong Pham-Quoc, 2026.\"",
-    "\"Federated Learning with Trust-aware Blockchain Fingerprinting: A Secure and Verifiable Framework for Edge AI, Phuc Tran-Vinh, Thai-Minh Truong, and Cuong Pham-Quoc, 2025\"",
-    "\"FPGA-based Secure Federated Learning with CNN Inference and Hardware Cryptography, Phuc Tran-Vinh and Cuong Pham-Quoc,2025\"",
-  "\"Environmental Fingerprint-Based Access Control for Edge-AI Inference on FPGA, Phuc Tran-Vinh and Cuong Pham-Quoc,2025\"",
-"\"Edge AI: A Comprehensive Survey on Applications, Challenges, and Future Directions,2025\"",
-"\..."
-
+    "\"Code không chỉ là công việc — đó là nghệ thuật giải quyết vấn đề.\"",
+    "\"Học lập trình giống như học ngôn ngữ mới: thực hành mỗi ngày là chìa khóa.\"",
+    "\"Đừng sợ lỗi — mỗi error là một bài học quý giá.\""
   ]
 };
 

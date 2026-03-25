@@ -3,14 +3,14 @@ export const chapters = [
     id: 1,
     title: "Python Cơ Bản",
     subtitle: "Variables, Functions, Collections & Files",
-    emoji: "",
+    emoji: "🐍",
     color: "#00FF88",
     dark: "#003322",
     topics: [
       {
         id: "1-1",
         title: "Biến & Kiểu Dữ Liệu",
-        icon: "",
+        icon: "📦",
         theory: `## Biến (Variables)
 
 Biến là **tên** dùng để lưu trữ dữ liệu trong bộ nhớ. Python là ngôn ngữ **dynamic typing** — không cần khai báo kiểu.
@@ -114,7 +114,7 @@ DATABASE_URL = "localhost:5432"`,
       {
         id: "1-2",
         title: "Hàm (Functions)",
-        icon: "",
+        icon: "⚙️",
         theory: `## Hàm trong Python
 
 Hàm là **khối code** có tên, thực hiện một nhiệm vụ cụ thể, có thể tái sử dụng.
@@ -244,7 +244,7 @@ cong(3, 4)`,
       {
         id: "1-3",
         title: "List & Tuple",
-        icon: "",
+        icon: "📋",
         theory: `## List và Tuple
 
 ### List — Danh sách có thể thay đổi
@@ -373,7 +373,7 @@ for i, (ten, diem) in enumerate(zip(ten_list, diem_list), 1):
       {
         id: "1-4",
         title: "Dictionary & Set",
-        icon: "",
+        icon: "🗂️",
         theory: `## Dictionary và Set
 
 ### Dictionary — Từ điển (key-value)
@@ -500,7 +500,7 @@ print("Không trùng:", emails_unique)`,
       {
         id: "1-5",
         title: "Xử lý File",
-        icon: "",
+        icon: "📁",
         theory: `## Xử lý File trong Python
 
 ### Mở file với \`open()\`
@@ -638,14 +638,14 @@ print("✓ Hoàn thành!")`,
     id: 2,
     title: "Hướng Đối Tượng",
     subtitle: "OOP với Python",
-    emoji: "",
+    emoji: "🏗️",
     color: "#FF6B35",
     dark: "#331500",
     topics: [
       {
         id: "2-1",
         title: "Class & Object",
-        icon: "",
+        icon: "🔷",
         theory: `## Lập trình Hướng Đối Tượng (OOP)
 
 ### 4 Tính chất cơ bản
@@ -687,7 +687,7 @@ class SinhVien:
     """Lớp đại diện cho sinh viên"""
     
     # Class variable (chung cho tất cả instances)
-    truong = "Đại học Đà Lạt"
+    truong = "Đại học ABC"
     so_luong = 0
     
     def __init__(self, ten, ma_sv, tuoi):
@@ -813,7 +813,7 @@ for i, sv in enumerate(ds_sv, 1):
       {
         id: "2-2",
         title: "Kế thừa & Đa hình",
-        icon: "",
+        icon: "🧬",
         theory: `## Kế thừa (Inheritance)
 
 \`\`\`python
@@ -997,14 +997,14 @@ print(f"\\nJSON: {ht.to_json_str()}")`,
     id: 3,
     title: "Cấu Trúc Dữ Liệu & Giải Thuật",
     subtitle: "DSA với Python",
-    emoji: "",
+    emoji: "⚡",
     color: "#A855F7",
     dark: "#1A0033",
     topics: [
       {
         id: "3-1",
         title: "Stack, Queue, LinkedList",
-        icon: "",
+        icon: "🔗",
         theory: `## Cấu trúc dữ liệu tuyến tính
 
 ### Stack (Ngăn xếp) — LIFO
@@ -1215,7 +1215,7 @@ print(f"Search(4): vị trí {ll.search(4)}")`,
       {
         id: "3-2",
         title: "Sắp xếp & Tìm kiếm",
-        icon: "",
+        icon: "🔍",
         theory: `## Các giải thuật quan trọng
 
 ### Sắp xếp (Sorting)
@@ -1400,14 +1400,14 @@ print(f"  Binary search: vị trí {idx_binary}")`,
     id: 4,
     title: "Tkinter & Database",
     subtitle: "GUI & SQLite",
-    emoji: "",
+    emoji: "🖥️",
     color: "#06B6D4",
     dark: "#001A22",
     topics: [
       {
         id: "4-1",
         title: "Tkinter GUI",
-        icon: "",
+        icon: "🪟",
         theory: `## Tkinter — Thư viện GUI chuẩn của Python
 
 ### Các Widget cơ bản
@@ -1484,11 +1484,11 @@ class SinhVienApp:
         btn_frame.pack(fill="x", padx=10, pady=5)
         
         btn_configs = [
-            (" Thêm", "#a6e3a1", self.them_sv),
-            (" Sửa",  "#f9e2af", self.sua_sv),
-            (" Xóa",  "#f38ba8", self.xoa_sv),
-            (" Tìm",  "#89b4fa", self.tim_sv),
-            (" Tất cả","#cba6f7", self.load_data),
+            ("➕ Thêm", "#a6e3a1", self.them_sv),
+            ("✏️ Sửa",  "#f9e2af", self.sua_sv),
+            ("🗑️ Xóa",  "#f38ba8", self.xoa_sv),
+            ("🔍 Tìm",  "#89b4fa", self.tim_sv),
+            ("📋 Tất cả","#cba6f7", self.load_data),
         ]
         
         for text, color, cmd in btn_configs:
@@ -1676,7 +1676,7 @@ if __name__ == "__main__":
       {
         id: "4-2",
         title: "Kết nối Database SQLite",
-        icon: "",
+        icon: "🗄️",
         theory: `## SQLite với Python
 
 ### Tại sao SQLite?
@@ -1936,14 +1936,14 @@ print(f"  Điểm TB: {stats['diem_tb_truong']:.2f}")`,
     id: 5,
     title: "Matplotlib",
     subtitle: "Visualización de datos",
-    emoji: "",
+    emoji: "📊",
     color: "#F59E0B",
     dark: "#1A1000",
     topics: [
       {
         id: "5-1",
         title: "Vẽ đồ thị cơ bản",
-        icon: "",
+        icon: "📈",
         theory: `## Matplotlib — Thư viện vẽ đồ thị
 
 ### Import
@@ -2111,14 +2111,14 @@ print("✓ Đã lưu biểu đồ vào charts.png")`,
     id: 6,
     title: "NumPy & Pandas",
     subtitle: "Data Science với Python",
-    emoji: "",
+    emoji: "🔬",
     color: "#EC4899",
     dark: "#1A0011",
     topics: [
       {
         id: "6-1",
         title: "NumPy Arrays",
-        icon: "",
+        icon: "🔢",
         theory: `## NumPy — Numerical Python
 
 ### Tại sao NumPy?
@@ -2267,7 +2267,7 @@ print(f"Xếp hạng (index): {np.argsort(diem_tb)[::-1]}")`,
       {
         id: "6-2",
         title: "Pandas DataFrame",
-        icon: "",
+        icon: "🐼",
         theory: `## Pandas — Data Analysis
 
 ### Cấu trúc dữ liệu
@@ -2427,7 +2427,7 @@ print(top5.to_string(index=False))`,
 export const bigProjects = {
   individual: [
     {
-      title: " Hệ thống quản lý cửa hàng bán lẻ",
+      title: "🏪 Hệ thống quản lý cửa hàng bán lẻ",
       level: "Trung cấp",
       duration: "2-3 tuần",
       skills: ["OOP", "SQLite", "Tkinter", "Matplotlib"],
@@ -2443,7 +2443,7 @@ export const bigProjects = {
       tech: "Tkinter + SQLite + Matplotlib + Pandas"
     },
     {
-      title: " Trình đọc tin tức với phân tích sentiment",
+      title: "📰 Trình đọc tin tức với phân tích sentiment",
       level: "Nâng cao",
       duration: "3-4 tuần",
       skills: ["API", "Pandas", "Matplotlib", "NLP cơ bản"],
@@ -2459,7 +2459,7 @@ export const bigProjects = {
       tech: "requests + BeautifulSoup + Pandas + Matplotlib + wordcloud"
     },
     {
-      title: " Ứng dụng quản lý chi tiêu cá nhân",
+      title: "💰 Ứng dụng quản lý chi tiêu cá nhân",
       level: "Cơ bản+",
       duration: "1-2 tuần",
       skills: ["Python cơ bản", "SQLite", "Matplotlib"],
@@ -2477,7 +2477,7 @@ export const bigProjects = {
   ],
   group: [
     {
-      title: " Hệ thống quản lý trường học",
+      title: "🎓 Hệ thống quản lý trường học",
       level: "Nâng cao",
       duration: "4-6 tuần",
       team: "4-5 người",
@@ -2493,7 +2493,7 @@ export const bigProjects = {
       github: "Chia nhánh theo module, merge vào main"
     },
     {
-      title: " Phần mềm quản lý phòng khám",
+      title: "🏥 Phần mềm quản lý phòng khám",
       level: "Chuyên nghiệp",
       duration: "5-7 tuần",
       team: "4-5 người",
@@ -2513,7 +2513,7 @@ export const bigProjects = {
 
 export const tips = [
   {
-    category: " Hiệu suất",
+    category: "⚡ Hiệu suất",
     items: [
       {
         title: "List Comprehension nhanh hơn for loop",
@@ -2551,7 +2551,7 @@ total = sum(gen)  # Tính lần lượt`
     ]
   },
   {
-    category: " Debug & Xử lý lỗi",
+    category: "🐛 Debug & Xử lý lỗi",
     items: [
       {
         title: "f-string debug nhanh (Python 3.8+)",
@@ -2614,7 +2614,7 @@ log.critical("Lỗi nghiêm trọng")`
     ]
   },
   {
-    category: " Code sạch & Pythonic",
+    category: "🎨 Code sạch & Pythonic",
     items: [
       {
         title: "Walrus operator := (Python 3.8+)",
@@ -2716,7 +2716,7 @@ print(Direction.NORTH.value)  # "N"`
     ]
   },
   {
-    category: " Thủ thuật hay",
+    category: "🔧 Thủ thuật hay",
     items: [
       {
         title: "Unpacking nâng cao",

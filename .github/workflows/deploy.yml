@@ -1,50 +1,41 @@
-name: 🚀 Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Cho phép chạy thủ công từ GitHub UI
+  workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    concurrency:
-      group: github-pages
-      cancel-in-progress: true
-
     steps:
-      - name: 📥 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js 22
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: 🔨 Build
+      - name: Build
         run: npm run build
         env:
           CI: false
           GENERATE_SOURCEMAP: false
 
-      - name: 📄 Add .nojekyll (fix GitHub Pages routing)
+      - name: Add nojekyll
         run: touch ./build/.nojekyll
 
-      - name: 🌐 Deploy to gh-pages branch
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
           force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: '🚀 Deploy: ${{ github.event.head_commit.message }}'
