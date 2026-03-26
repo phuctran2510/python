@@ -2,7 +2,7 @@
   "name": "python-mastery",
   "version": "1.0.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/",
   "dependencies": {
     "ajv": "^8.18.0",
     "cross-env": "^10.1.0",
@@ -19,12 +19,7 @@
     "deploy": "gh-pages -d build"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead"
-    ],
-    "development": [
-      "last 1 chrome version"
-    ]
+    "production": [">0.2%", "not dead"],
+    "development": ["last 1 chrome version"]
   }
 }
