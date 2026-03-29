@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/python-mastery/static/css/main.ad4293c3.css",
+    "main.js": "/python-mastery/static/js/main.386ea84c.js",
+    "index.html": "/python-mastery/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.ad4293c3.css",
+    "static/js/main.386ea84c.js"
+  ]
+}
