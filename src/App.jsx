@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { chapters, bigProjects, tips } from './data/curriculum';
 import { instructor, extraExercises, extraLabs, practiceTests } from './data/extras';
-
+import './index.css'
 // ─── COLOR UTILS ────────────────────────────────────────────────────────────
 const hexToRgb = hex => {
   const r = parseInt(hex.slice(1,3),16);
