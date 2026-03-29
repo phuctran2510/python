@@ -1076,7 +1076,7 @@ function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (pwd === 'aiot2026') {
+    if (pwd === 'python2026') {
       localStorage.setItem('auth', 'true')
       onLogin(true)
     } else {
@@ -1089,10 +1089,10 @@ function Login({ onLogin }) {
       <div style={S.card}>
         {/* LEFT */}
         <div style={S.left}>
-          <div style={S.logo}>AIoT</div>
-          <h2 style={S.title}>AIoT EDU</h2>
+          <div style={S.logo}>Python</div>
+          <h2 style={S.title}>Python EDU</h2>
           <p style={S.subtitle}>
-            Hệ thống học tập & nghiên cứu AIoT — DLU
+            Hệ thống học tập & nghiên cứu Python — DLU
           </p>
 
           <form onSubmit={handleSubmit} style={{width:'100%'}}>
