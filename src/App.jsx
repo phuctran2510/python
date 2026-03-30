@@ -1489,7 +1489,7 @@ function SidebarChapter({ ch, ci, activeChapter, activeTopic, onSelect }) {
     </div>
   );
 }
-onst S = {
+const S = {
   wrap: {
     minHeight: '100vh',
     display: 'flex',
